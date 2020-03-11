@@ -1,0 +1,55 @@
+html { height: 100%; }
+body {
+  min-height:100%; 
+  position:relative; 
+  padding-bottom: 70px; 
+}
+.footer { 
+  position: absolute; 
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  height: 50px; 
+}
+tbody {
+      display:block;
+      max-height:600px;
+      overflow-y:auto;
+  }
+  thead, tbody tr {
+      display:table;
+      width:100%;
+      table-layout:fixed;
+  }
+ .thead_calc {
+      width: calc( 100% - 1em )
+ }
+ 
+ .ps_color{
+     color: #dc3545;
+ }
+ #error_save_user, #error_del{
+     color: red;
+ }
+ 
+ .my_property_border{
+     
+ }
+ 
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}

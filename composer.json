@@ -1,0 +1,15 @@
+{
+    "name": "brans/mylibs",
+    "description": "libs for brands",
+    "authors": [
+        {
+            "name": "Aleksey Gamov",
+            "email": "alexgamow@rambler.ru"
+        }
+    ],
+    "require": {},
+	"autoload" :{
+		"psr-4" : {
+		"brands\\":""}
+	}	
+}
