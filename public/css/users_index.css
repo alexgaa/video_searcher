@@ -28,7 +28,7 @@ tbody {
  .ps_color{
      color: #dc3545;
  }
- #error_save_user, #error_del{
+ #error_save_user, #error_del, .error{
      color: red;
  }
  

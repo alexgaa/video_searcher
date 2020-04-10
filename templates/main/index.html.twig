@@ -1,0 +1,51 @@
+{% extends 'base_menu.html.twig' %}
+
+{% block title %}Video Searcher{% endblock %}
+
+{% block body %}
+<style>
+    /*.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }*/
+       .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+{#<div class="example-wrapper">#}
+    <div>
+    <form action="{{ path('link_user') }}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <br>
+            <label for="linkUser"><h4><b>Введите адрес страницы для поиска на ней видео:</b></h4></label>
+            <input type="text" class="form-control" id="linkUser" aria-describedby="linkUserHelp" name="linkuser" readonly required value="https://lexani.com/videos" placeholder="https://example.com">
+            <small id="linkUserHelp" class="form-text text-muted">Страница может содержать видео формата youtube, vimeo.</small>
+        </div>
+        <button id='submit_search_video' type="submit" class="btn btn-primary">Поиск</button>
+    </form>
+    <br>
+    <b><p class="text-success" id='info_message'></p></b>
+
+    {% if result %}
+        <h4 class="text-secondary">Результат поиска видео на сайте "{{result['inputLink']}}":</h4>
+        <form  action="/" method="post" enctype="multipart/form-data">
+            <p class="text-secondary">Всего найдено <b> {{result['summaryData']['all']}} </b> линков на видео.
+               {% if result['summaryData']['all']  %}
+                <a href='{{path('file_result')}}' name='a_result_file' class="btn text-primary shadow-none">Скачать</a>
+                {% endif %}
+            </p>
+            {% if  result['summaryData']['old'] or result['summaryData']['none'] or result['summaryData']['new']%}
+            <p class="text-secondary">Результат анализа линков на видео: <a href='{{path('file_сomparison')}}' class="btn text-primary shadow-none">Скачать</a><br>
+                Новые - <b>{{result['summaryData']['new']}}</b><br>
+                Старые - <b>{{result['summaryData']['old']}}</b><br>
+                Удалены с сайта - <b>{{result['summaryData']['none']}}</b><br>
+            </p>
+            {% endif %}
+            {% if result['summaryData']['error'] %}
+                <p class="text-secondary">Линки с ошибками <b>{{result['summaryData']['error']}}</b>  <a href='{{path('file_error')}}' class="btn text-primary shadow-none">Скачать</a></p>
+            {% endif %}
+            <a href="{{ path('main') }}" class="btn btn-primary shadow-none text-white">Очистить</a>
+        </form>
+    {% endif %}
+    {% if error %}
+        <p class="error"><b>{{ error }}</b></p>
+    {% endif %}
+
+</div>
+{% endblock %}
